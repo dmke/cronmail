@@ -45,7 +45,7 @@ FAQ, below):
 
     $ crontab -e
     $ # insert a line like this:
-    $ # */10 * * * * /path/to/cloned/cronmail/cronmail.rb >/dev/null 2>&1
+    $ # */10 * * * * /usr/bin/ruby /path/to/cloned/cronmail/cronmail.rb >/dev/null 2>&1
 
 This will send your recipients every ten minutes a status report. See
 `crontab(8)` for more details.
@@ -54,7 +54,7 @@ This will send your recipients every ten minutes a status report. See
 
 1. **I have an error or any output while testing.**
     * Consider this:
-        * Ensure to have some current versions of Ruby, RubyGems, Cron
+        * Ensure to have some recent versions of Ruby, RubyGems, Cron
           and your MTA installed.
         * Ensure to have them configured correctly.
         * Check the log messages of your MTA, may be the recipients are
