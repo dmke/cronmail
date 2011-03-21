@@ -53,25 +53,25 @@ This will send your recipients every ten minutes a status report. See
 ## FAQ
 
 1. **I have an error or any output while testing.**
-  * Consider this:
-    * Ensure to have some current versions of Ruby, RubyGems, Cron and
-      your MTA installed.
-    * Ensure to have them configured correctly.
-    * Check the log messages of your MTA, may be the recipients are
-      rejecting your host for some (good) reason.
-    * At this point, you will 
+    * Consider this:
+        * Ensure to have some current versions of Ruby, RubyGems, Cron
+          and your MTA installed.
+        * Ensure to have them configured correctly.
+        * Check the log messages of your MTA, may be the recipients are
+          rejecting your host for some (good) reason.
 
 2. **I still receive no mail.**
-  * Have you checked your junk filter?
-  * Ensure Cron and your MTA are running.
+    * Have you checked your junk filter?
+    * Ensure Cron and your MTA are running.
 
 3. **I'd like to have an email only at startup time, is that possible?**
-  * Sure, if your cron daemon allows you to be configured this way,
-    like Vixie Cron, why not?
-  * RTFM, `crontab(8)`
+    * Sure, if your cron daemon allows you to be configured this way,
+      like Vixie Cron, why not?
+    * RTFM, `crontab(8)`
 
 4. **I don't have a cron daemon installed, is there another way to send
   status emails periodically?**
-  * That might be possible in a future version of Cronmail.
-  * Seriously? You're running a server without any crond? How do you...?
+    * That might be possible in a future version of Cronmail.
+    * Seriously? You're running a server without any crond? How do
+      you...?
 
