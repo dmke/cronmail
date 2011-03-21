@@ -1,0 +1,54 @@
+<html>
+<head>
+<title><%= @subject %></title>
+<style type="text/css">
+body { font: 11px/13px monospace; width: 1000px; max-width: 95%; margin: 0 auto; }
+table { border: none; border-collapse: collapse; }
+th { text-align: left; }
+h1 { font-size: 22px; margin: 1em 0 .5em; }
+h2 { font-size: 16px; margin-top: 1.5em; padding-top: .5em; border-top: 3px solid gray; }
+pre { font: 12px/13px monospace; }
+th, td { padding-right: 1em; vertical-align: top; }
+</style>
+</head>
+<body>
+<h1>Status report</h1>
+<h2>Overview</h2>
+<table>
+  <tr>
+    <th>uptime</th>
+    <td><%= @uptime[0] %></td>
+  </tr>
+  <tr>
+    <th>users</th>
+    <td><%= @uptime[1] %></td>
+  </tr>
+  <tr>
+    <th>load</th>
+    <td><%= @uptime[2] %></td>
+  </tr>
+</table>
+
+<h2>free -m</h2>
+<pre>
+<%= @freemem -%>
+</pre>
+
+<h2>who -a</h2>
+<pre>
+<%= @who -%>
+</pre>
+
+<h2>ps aux</h2>
+<table>
+  <tr><th>USER</th><th>PID</th><th>%CPU</th><th>%MEM</th><th>VSZ</th><th>RSS</th><th>TTY</th><th>STAT</th><th>START</th><th>TIME</th><th>COMMAND</th></tr>
+  <%- @ps_lines.each do |line| -%>
+  <tr>
+    <%- line.split(/\s+/, 11).each do |cell| -%>
+    <td><%= cell.strip %></td>
+    <%- end -%>
+  </tr>
+  <%- end -%>
+</table>
+</body>
+</html>

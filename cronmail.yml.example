@@ -1,0 +1,8 @@
+:cronmail:
+  :from: cron@example.net
+  :recipients:
+    - admin@example.com
+    - munin@example.org
+:action_mailer:
+  :raise_delivery_errors: false
+  :delivery_method: :sendmail # currently, there is sendmail only
