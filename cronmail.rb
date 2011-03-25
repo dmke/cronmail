@@ -16,9 +16,9 @@ ActionMailer::Base.view_paths            = File.dirname(__FILE__)
 
 class Cronmail < ActionMailer::Base
   def status
-    @ps       = `ps aux`.strip.gsub(/\s*$/, '')
+    @ps       = `ps aux`.rstrip.gsub(/\s*$/, '')
     @ps_lines = @ps.split("\n")[1..-1]
-    @who      = `who -a`.strip
+    @who      = `who -a`.rstrip
     @uptime   = {}
     `uptime`.match(/up (.*?),  (\d) users?,  load average: (.*)$/) do |m|
       @uptime = {
@@ -27,9 +27,9 @@ class Cronmail < ActionMailer::Base
         :load_avg => m[3]
       }
     end
-    @freedisk = `df -h`.strip 
-    @freemem  = `free -m`.strip
-    @hostname = `hostname`.strip
+    @freedisk = `df -h`.rstrip 
+    @freemem  = `free -m`.rstrip
+    @hostname = `hostname`.rstrip
     @subject  = "#{@hostname}: I am alive! [#{Time.now}]"
 
     mail(:to => CONFIG[:cronmail][:recipients], :from => CONFIG[:cronmail][:from], :subject => @subject) do |format|
