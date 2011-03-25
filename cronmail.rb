@@ -19,6 +19,7 @@ class Cronmail < ActionMailer::Base
     @ps       = `ps aux`.strip.gsub(/\s*$/, '')
     @ps_lines = @ps.split("\n")[1..-1]
     @who      = `who -a`.strip
+    @uptime   = {}
     `uptime`.match(/up (.*?),  (\d) users,  load average: (.*)$/) do |m|
       @uptime = {
         :uptime   => m[1],
