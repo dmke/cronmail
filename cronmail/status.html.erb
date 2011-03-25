@@ -12,26 +12,31 @@ th, td { padding-right: 1em; vertical-align: top; }
 </style>
 </head>
 <body>
-<h1>Status report</h1>
+<h1>Status report for <%= @hostname %></h1>
 <h2>Overview</h2>
 <table>
   <tr>
     <th>uptime</th>
-    <td><%= @uptime[0] %></td>
+    <td><%= @uptime[:uptime] %></td>
   </tr>
   <tr>
     <th>users</th>
-    <td><%= @uptime[1] %></td>
+    <td><%= @uptime[:users] %></td>
   </tr>
   <tr>
     <th>load</th>
-    <td><%= @uptime[2] %></td>
+    <td><%= @uptime[:load_avg] %></td>
   </tr>
 </table>
 
 <h2>free -m</h2>
 <pre>
 <%= @freemem -%>
+</pre>
+
+<h2>df -h</h2>
+<pre>
+<%= @freedisk -%>
 </pre>
 
 <h2>who -a</h2>
