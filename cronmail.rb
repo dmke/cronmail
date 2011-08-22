@@ -8,6 +8,7 @@ begin
 rescue
   puts "*** Cronmail: You need to setup a cronmail.yml."
   puts "*** No mail send. Exiting."
+  exit
 end
 
 ActionMailer::Base.raise_delivery_errors = CONFIG[:action_mailer][:raise_delivery_errors]
@@ -16,6 +17,7 @@ ActionMailer::Base.view_paths            = File.dirname(__FILE__)
 
 class Cronmail < ActionMailer::Base
   def status
+    @uname    = `uname -rv`.rstrip
     @ps       = `ps aux`.rstrip.gsub(/\s*$/, '')
     @ps_lines = @ps.split("\n")[1..-1]
     @who      = `who -a`.rstrip
