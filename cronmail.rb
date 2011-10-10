@@ -18,7 +18,7 @@ ActionMailer::Base.view_paths            = File.dirname(__FILE__)
 class Cronmail < ActionMailer::Base
   def status
     @uname    = `uname -rv`.rstrip
-    @ps       = `ps aux`.rstrip.gsub(/\s*$/, '')
+    @ps       = `ps auxk +uid,-command`.rstrip.gsub(/\s*$/, '')
     @ps_lines = @ps.split("\n")[1..-1]
     @who      = `who -a`.rstrip
     @uptime   = {}
@@ -46,4 +46,3 @@ if ARGV.size > 0
 else
   Cronmail.status.deliver
 end
-

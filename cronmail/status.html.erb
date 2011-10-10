@@ -48,7 +48,7 @@ th, td { padding-right: 1em; vertical-align: top; }
 <%= @who -%>
 </pre>
 
-<h2>ps aux</h2>
+<h2>ps auxk +uid,-command</h2>
 <table>
   <tr><th>USER</th><th>PID</th><th>%CPU</th><th>%MEM</th><th>VSZ</th><th>RSS</th><th>TTY</th><th>STAT</th><th>START</th><th>TIME</th><th>COMMAND</th></tr>
   <%- @ps_lines.each do |line| -%>
